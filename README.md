@@ -16,6 +16,7 @@ kafka-server-start /usr/local/etc/kafka/server.properties
 Create Topic
 ------------
 kafka-topics --create --topic kafka-example --zookeeper localhost:2181 --replication-factor 1 --partitions 1 (if Kafka installed using brew)
+
 bin/kafka-topics.sh --create --topic kafka-example --zookeeper localhost:2181 --replication-factor 1 --partitions 1(if installed manually)
 
 To check Kafka list
