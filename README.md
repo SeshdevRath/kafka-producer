@@ -26,3 +26,7 @@ kafka-topics -list --zookeeper localhost:2181
 To start consumer
 -----------------
 kafka-console-consumer --bootstrap-server localhost:9092 --topic kafka-example --from-beginning
+
+To start producer
+-----------------
+kafka-console-producer --broker-list localhost:9092 --topic kafka-example
