@@ -5,7 +5,7 @@ STEPS
 =====
 -> Start zookeeper server
 
--> Start Kafka server
+-> Create and start a kafka server
 
 -> Create a topic
 
@@ -22,9 +22,27 @@ To start zookeeper server
 -------------------------
 zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 
-To start Kafka server
----------------------
+To start Kafka server or broker
+-------------------------------
 kafka-server-start /usr/local/etc/kafka/server.properties
+
+To create another broker
+------------------------
+-> Create another server.properties file with different name
+
+	Ex. Server-1.properties
+  
+	cp /usr/local/etc/kafka/server.properties  /usr/local/etc/kafka/server-1.properties 
+  
+	vim /usr/local/etc/kafka/server-1.properties
+	
+	set
+  
+		broker.id=1(other than existing broker ids)
+    
+		listeners=PLAINTEXT://:9093 (different port other than existing server properties)
+    
+		log.dirs=/usr/local/var/lib/kafka-logs-1(other than existing log file)
 
 Create Topic
 ------------
