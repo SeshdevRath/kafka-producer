@@ -5,7 +5,7 @@ STEPS
 =====
 -> Start zookeeper server
 
--> Create and start a kafka server
+-> Create and start a kafka server/broker
 
 -> Create a topic
 
@@ -44,11 +44,15 @@ To create another broker
     
 		log.dirs=/usr/local/var/lib/kafka-logs-1(other than existing log file)
 
-Create Topic
-------------
+To create a Topic
+-----------------
 kafka-topics --create --topic kafka-example --zookeeper localhost:2181 --replication-factor 1 --partitions 1 (if Kafka installed using brew)
 
 bin/kafka-topics.sh --create --topic kafka-example --zookeeper localhost:2181 --replication-factor 1 --partitions 1(if installed manually)
+
+To get info about a topic
+-------------------------
+kafka-topics --zookeeper localhost:2181 --describe --topic kafka-example
 
 To check Kafka list
 -------------------
