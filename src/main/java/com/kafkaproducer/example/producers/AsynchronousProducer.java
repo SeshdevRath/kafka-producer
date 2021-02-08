@@ -1,13 +1,13 @@
 package com.kafkaproducer.example.producers;
 
+import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
 
-public class SimpleProducer {
+public class AsynchronousProducer {
 
     public void produce(String topic, String key, String value) {
         Properties props = new Properties();
@@ -18,9 +18,8 @@ public class SimpleProducer {
         Producer<String, String> producer = new KafkaProducer<>(props);
         ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, value);
 
-        producer.send(record);
+        producer.send(record, new AsynchronousProducerCallback());
+        System.out.print("AsynchronousProducer completed");
         producer.close();
-
-        System.out.print("Producer completed");
     }
 }

@@ -27,7 +27,7 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> post(@PathVariable("message") String message) {
 
         SimpleProducer producer = new SimpleProducer();
-        producer.produceMessage(TOPIC, "Message: ", message);
+        producer.produce(TOPIC, "Message: ", message);
 
         SynchronousProducer synchronousProducer = new SynchronousProducer();
         synchronousProducer.produce(TOPIC, "Message: ", message);
