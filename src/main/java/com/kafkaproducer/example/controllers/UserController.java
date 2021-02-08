@@ -1,6 +1,7 @@
 package com.kafkaproducer.example.controllers;
 
 import com.kafkaproducer.example.dto.User;
+import com.kafkaproducer.example.producers.AsynchronousProducer;
 import com.kafkaproducer.example.producers.SimpleProducer;
 import com.kafkaproducer.example.producers.SynchronousProducer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,13 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> post(@PathVariable("message") String message) {
 
         SimpleProducer producer = new SimpleProducer();
-        producer.produce(TOPIC, "Message: ", message);
+        producer.produce(TOPIC, "simple", message);
 
         SynchronousProducer synchronousProducer = new SynchronousProducer();
-        synchronousProducer.produce(TOPIC, "Message: ", message);
+        synchronousProducer.produce(TOPIC, "synchronous", message);
+
+        AsynchronousProducer asynchronousProducer = new AsynchronousProducer();
+        asynchronousProducer.produce(TOPIC, "asynchronous", message);
 
         kafkaTemplate.send(TOPIC, new User("Peter", "Technology", message, 20000L));
 
