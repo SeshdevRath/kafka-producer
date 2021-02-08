@@ -1,6 +1,7 @@
 package com.kafkaproducer.example.controllers;
 
 import com.kafkaproducer.example.dto.User;
+import com.kafkaproducer.example.producers.SimpleProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,8 @@ public class UserController {
     @GetMapping("/publish/{message}")
     public ResponseEntity<Map<String, Object>> post(@PathVariable("message") String message) {
 
+        SimpleProducer producer = new SimpleProducer();
+        producer.produceMessage(TOPIC, "Message: ", message);
         kafkaTemplate.send(TOPIC, new User("Peter", "Technology", message, 20000L));
 
         Map<String, Object> responseMap = new HashMap<>();

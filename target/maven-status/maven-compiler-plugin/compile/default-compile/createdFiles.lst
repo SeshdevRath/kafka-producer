@@ -1,4 +1,5 @@
 com/kafkaproducer/example/KafkaProducerApplication.class
+com/kafkaproducer/example/controllers/UserController.class
 com/kafkaproducer/example/dto/User.class
-com/kafkaproducer/example/resources/UserResource.class
+com/kafkaproducer/example/producers/SimpleProducer.class
 com/kafkaproducer/example/config/KafkaConfig.class
