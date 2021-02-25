@@ -11,11 +11,5 @@ public class AsynchronousProducerCallback implements Callback {
         } else {
             System.out.print("AsynchronousProducer completed with success");
         }
-
-
-
-
-
-        
     }
 }
